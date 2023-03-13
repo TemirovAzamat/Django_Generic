@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Имя</th>
+      <th scope="col">Гражданство</th>
+      <th scope="col">Дата рождения</th>
+      <th scope="col">Место работы</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for view in views %}
+    <tr>
+      <th scope="row">{{ view.id }}</th>
+      <td>{{ view.name }}</td>
+      <td>{{ view.citizenship }}</td>
+      <td>{{ view.birth_year }}</td>
+      <td>{{ view.work_place }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

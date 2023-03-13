@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-center">Личная информация о {{ object.name }}</h2>
+<h4 class="text-center">Имя: {{ object.name }}, гражданство: {{ object.citizenship }}, дата рождения: {{ object.birth_year }},
+место работы: {{ object.work_place }}</h4>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Number</th>
+      <th scope="col">Account_type</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for account in object.accounts.all %}
+    <tr>
+      <th scope="row">{{ account.id }}</th>
+      <td>{{ account.number }}</td>
+      <td>{{ account.account_type }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Credit</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for account in object.accounts.all %}
+    {% for credit in account.credits.all %}
+      <tr>
+        <th scope="row">{{ credit.id }}</th>
+        <td>{{ credit.sum }}</td>
+        <td>{{ credit.date }}</td>
+      </tr>
+    {% endfor %}
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
